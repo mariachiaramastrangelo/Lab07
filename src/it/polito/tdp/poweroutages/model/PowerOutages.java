@@ -1,10 +1,13 @@
 package it.polito.tdp.poweroutages.model;
 
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 
 
-public class PowerOutages {
+public class PowerOutages implements Comparable<PowerOutages>{
 	
 	private int id;
 	private int event_type_id;
@@ -122,6 +125,15 @@ public class PowerOutages {
 		return id + " " + nerc_id + " " + customers_affected + " " + date_event_began + " " + date_event_finished;
 	}
 	
+	public long duration() {
+		//long hours= Duration.between(date_event_began, date_event_finished).toHours();
+		long hours= this.date_event_began.until(date_event_finished, ChronoUnit.HOURS);
+		return hours;
+	}
+	@Override
+	public int compareTo(PowerOutages o) {
+		
+		return this.getDate_event_began().compareTo(o.getDate_event_finished());
+	}
 	
-
 }
