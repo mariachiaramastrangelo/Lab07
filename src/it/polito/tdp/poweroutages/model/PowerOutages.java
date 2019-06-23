@@ -1,6 +1,8 @@
 package it.polito.tdp.poweroutages.model;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
+
 
 public class PowerOutages {
 	
@@ -11,11 +13,15 @@ public class PowerOutages {
 	private int nerc_id;
 	private int responsible_id;
 	private int customers_affected;
-	private LocalDate date_event_began;
-	private LocalDate date_event_finished;
+	private LocalDateTime date_event_began;
+	private LocalDateTime date_event_finished;
 	private int demand_loss;
+	
+	
+
 	public PowerOutages(int id, int event_type_id, int tag_id, int area_id, int nerc_id, int responsible_id,
-			int customers_affected, LocalDate date_event_began, LocalDate date_event_finished, int demand_loss) {
+			int customers_affected, LocalDateTime date_event_began, LocalDateTime date_event_finished,
+			int demand_loss) {
 		super();
 		this.id = id;
 		this.event_type_id = event_type_id;
@@ -70,16 +76,17 @@ public class PowerOutages {
 	public void setCustomers_affected(int customers_affected) {
 		this.customers_affected = customers_affected;
 	}
-	public LocalDate getDate_event_began() {
+
+	public LocalDateTime getDate_event_began() {
 		return date_event_began;
 	}
-	public void setDate_event_began(LocalDate date_event_began) {
+	public void setDate_event_began(LocalDateTime date_event_began) {
 		this.date_event_began = date_event_began;
 	}
-	public LocalDate getDate_event_finished() {
+	public LocalDateTime getDate_event_finished() {
 		return date_event_finished;
 	}
-	public void setDate_event_finished(LocalDate date_event_finished) {
+	public void setDate_event_finished(LocalDateTime date_event_finished) {
 		this.date_event_finished = date_event_finished;
 	}
 	public int getDemand_loss() {
@@ -88,6 +95,8 @@ public class PowerOutages {
 	public void setDemand_loss(int demand_loss) {
 		this.demand_loss = demand_loss;
 	}
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -107,6 +116,10 @@ public class PowerOutages {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+	@Override
+	public String toString() {
+		return id + " " + nerc_id + " " + customers_affected + " " + date_event_began + " " + date_event_finished;
 	}
 	
 	
